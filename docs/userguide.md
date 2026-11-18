@@ -22,6 +22,24 @@ Task IDs are positive integers assigned as tasks are added. Invalid IDs do not
 change the task list. Tasks are stored in memory, so exiting the program clears
 the list.
 
+## Example session
+
+```text
+Choose an option: 1
+Task title: Read chapter 4
+Added task #1: Read chapter 4
+
+Choose an option: 2
+#1 [pending] Read chapter 4
+
+Choose an option: 3
+Task ID: 1
+Task updated.
+
+Choose an option: 2
+#1 [completed] Read chapter 4
+```
+
 ## Run tests
 
 From the project root, run:
