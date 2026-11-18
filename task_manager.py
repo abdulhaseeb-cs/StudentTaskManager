@@ -32,6 +32,8 @@ class TaskManager:
 
     def complete_task(self, task_id):
         """Mark a task complete, returning False when its ID is unknown."""
+        if not isinstance(task_id, int) or isinstance(task_id, bool):
+            return False
         for task in self._tasks:
             if task.task_id == task_id:
                 task.completed = True
