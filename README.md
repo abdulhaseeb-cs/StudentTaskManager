@@ -2,7 +2,7 @@
 
 A small, dependency-free Python console application for managing student tasks.
 
-Project status: In progress
+Project status: Complete (features, docs, and tests implemented)
 
 ## Features
 
