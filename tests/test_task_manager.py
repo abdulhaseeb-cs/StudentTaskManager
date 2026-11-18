@@ -41,6 +41,13 @@ class TaskManagerTests(unittest.TestCase):
         self.assertTrue(self.manager.delete_task(task.task_id))
         self.assertEqual(self.manager.list_tasks(), [])
 
+    def test_delete_task_rejects_unknown_or_invalid_identifiers(self):
+        task = self.manager.add_task("Review notes")
+        for task_id in ("1", True, 99):
+            with self.subTest(task_id=task_id):
+                self.assertFalse(self.manager.delete_task(task_id))
+        self.assertEqual(self.manager.list_tasks(), [task])
+
 
 if __name__ == "__main__":
     unittest.main()
