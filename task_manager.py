@@ -21,6 +21,7 @@ class TaskManager:
         """Add a task and return it."""
         if not title.strip():
             raise ValueError("Task title cannot be empty.")
+        title = title.strip()
         task = Task(self._next_id, title)
         self._tasks.append(task)
         self._next_id += 1

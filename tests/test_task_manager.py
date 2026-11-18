@@ -19,6 +19,10 @@ class TaskManagerTests(unittest.TestCase):
                 with self.assertRaises(ValueError):
                     self.manager.add_task(title)
 
+    def test_add_task_trims_surrounding_whitespace(self):
+        task = self.manager.add_task("  Study for exam \n")
+        self.assertEqual(task.title, "Study for exam")
+
     def test_invalid_add_does_not_consume_task_id(self):
         with self.assertRaises(ValueError):
             self.manager.add_task(" ")
