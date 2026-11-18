@@ -24,6 +24,18 @@ class TaskManagerTests(unittest.TestCase):
             self.manager.add_task(" ")
         self.assertEqual(self.manager.add_task("Valid task").task_id, 1)
 
+    def test_complete_task_marks_matching_task_complete(self):
+        task = self.manager.add_task("Submit assignment")
+        self.assertTrue(self.manager.complete_task(task.task_id))
+        self.assertTrue(task.completed)
+
+    def test_complete_task_rejects_invalid_identifiers(self):
+        task = self.manager.add_task("Submit assignment")
+        for task_id in ("1", True, 99):
+            with self.subTest(task_id=task_id):
+                self.assertFalse(self.manager.complete_task(task_id))
+        self.assertFalse(task.completed)
+
 
 if __name__ == "__main__":
     unittest.main()
