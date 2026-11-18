@@ -42,6 +42,8 @@ class TaskManager:
 
     def delete_task(self, task_id):
         """Delete a task, returning False when its ID is unknown."""
+        if not isinstance(task_id, int) or isinstance(task_id, bool):
+            return False
         for index, task in enumerate(self._tasks):
             if task.task_id == task_id:
                 del self._tasks[index]
