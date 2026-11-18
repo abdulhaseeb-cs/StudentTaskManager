@@ -28,6 +28,10 @@ class TaskManagerTests(unittest.TestCase):
             self.manager.add_task(" ")
         self.assertEqual(self.manager.add_task("Valid task").task_id, 1)
 
+    def test_task_title_is_stored(self):
+        task = self.manager.add_task("CI demonstration")
+        self.assertEqual(task.title, "CI demonstration")
+
     def test_complete_task_marks_matching_task_complete(self):
         task = self.manager.add_task("Submit assignment")
         other_task = self.manager.add_task("Review notes")
