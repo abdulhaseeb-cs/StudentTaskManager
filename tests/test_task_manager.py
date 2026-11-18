@@ -30,8 +30,10 @@ class TaskManagerTests(unittest.TestCase):
 
     def test_complete_task_marks_matching_task_complete(self):
         task = self.manager.add_task("Submit assignment")
+        other_task = self.manager.add_task("Review notes")
         self.assertTrue(self.manager.complete_task(task.task_id))
         self.assertTrue(task.completed)
+        self.assertFalse(other_task.completed)
 
     def test_complete_task_rejects_invalid_identifiers(self):
         task = self.manager.add_task("Submit assignment")
