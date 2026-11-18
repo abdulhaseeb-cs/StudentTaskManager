@@ -36,6 +36,11 @@ class TaskManagerTests(unittest.TestCase):
                 self.assertFalse(self.manager.complete_task(task_id))
         self.assertFalse(task.completed)
 
+    def test_delete_task_removes_matching_task(self):
+        task = self.manager.add_task("Review notes")
+        self.assertTrue(self.manager.delete_task(task.task_id))
+        self.assertEqual(self.manager.list_tasks(), [])
+
 
 if __name__ == "__main__":
     unittest.main()
